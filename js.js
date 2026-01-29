@@ -17,8 +17,36 @@ function createSketchPad(gridItem)
             rowGrid.appendChild(colGrid)
         }
     }
+
+    const colorOfGrid = document.querySelectorAll(".colOfSquareItem");
+
+    colorOfGrid.forEach((item) => {
+    item.addEventListener('mouseover', () => {
+        item.style.backgroundColor = "red";
+    })
+})
 }
 
 createSketchPad(FIXED_GRID_ITEM);
+
+
+const btnForChangeGridSize = document.querySelector('.changeGridSize');
+
+btnForChangeGridSize.addEventListener('click', () => {
+
+    const newGridSize = prompt("Enter grid size (Maximum is 100)");
+    
+    if (newGridSize > 100) {
+        alert("You enter a value that greater than maximum ");
+        createSketchPad(FIXED_GRID_ITEM);
+        return;
+    }
+    container.innerHTML = "";
+    createSketchPad(newGridSize);
+})
+
+
+
+
 
 
