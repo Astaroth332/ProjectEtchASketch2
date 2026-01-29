@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container
+{
+    border: 1px solid black;
+    display: flex;
+    width: 960px;
+    height: 450px;
+}
+
+.rowOfSquareItem
+{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid blue;
+ 
+}
+
+.colOfSquareItem
+{
+    flex: 1;
+    border: 1px solid red;
+}
