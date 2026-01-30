@@ -1,6 +1,12 @@
 const container = document.querySelector(".container");
 const FIXED_GRID_ITEM = 4;
 
+let randomColorGenerator = () => {
+    let randomColor = Math.floor(Math.random() * 16777216).toString(16)
+    randomColor = randomColor.padStart(6, '0');
+    return randomColor;
+}
+
 function createSketchPad(gridItem)
 {
     container.innerHTML = '';
@@ -17,18 +23,16 @@ function createSketchPad(gridItem)
             rowGrid.appendChild(colGrid)
         }
     }
-
-    const colorOfGrid = document.querySelectorAll(".colOfSquareItem");
-
-    colorOfGrid.forEach((item) => {
-    item.addEventListener('mouseover', () => {
-        item.style.backgroundColor = "red";
-    })
-})
 }
 
-createSketchPad(FIXED_GRID_ITEM);
 
+container.addEventListener("mouseover", (e) => {
+    if(e.target.classList.contains('colOfSquareItem')) {
+        e.target.style.backgroundColor = `#${randomColorGenerator()}`;
+    }
+})
+
+createSketchPad(FIXED_GRID_ITEM);
 
 const btnForChangeGridSize = document.querySelector('.changeGridSize');
 
@@ -41,7 +45,6 @@ btnForChangeGridSize.addEventListener('click', () => {
         createSketchPad(FIXED_GRID_ITEM);
         return;
     }
-    container.innerHTML = "";
     createSketchPad(newGridSize);
 })
 
